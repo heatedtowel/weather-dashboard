@@ -22,7 +22,7 @@ function createDate(time) {
 }
 
 function makeContainer(day, temp, humidity, wind, uv) {
-  return `<div class="col bg-light m-2">
+  return `<div class="col m-2 fiveDay">
             <h4>Day ${day}</h4>
             <h5>${temp}&deg;</h5>
             <h5>${humidity}%</h5>
@@ -73,8 +73,18 @@ function getCoords(city) {
 
 btnEL.addEventListener('click', function () {
   var city = cityNameEL.value
-  h3EL = document.createElement('h3')
-  h3EL.textContent = city
-  previousResults.appendChild(h3EL)
+  previousResults.innerHTML += `<input class="btn btn-primary m-1 prevResult" id='prevBtn' type="submit" value="${city}">`;
+  console.log("original" + city)
+  addPrevEventList();
   getCoords(city);
 })
+
+
+function addPrevEventList() {
+  var prevBtnEL = document.querySelector('.prevResult')
+  prevBtnEL.addEventListener('click', function () {
+    var city = prevBtnEL.value
+    console.log(city)
+    getCoords(city);
+  })
+}

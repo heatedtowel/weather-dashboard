@@ -15,13 +15,13 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-light bg-light p-3 mb-5">
+  <nav class="navbar navbar-light p-3 mb-5">
     <div class="container-fluid">
       <span class="navbar-brand mb-0 h1 mx-auto fs-1">Weather Information</span>
     </div>
   </nav>
-  <section class="container bg-light p-3 pt-3 pb-3 mb-5">
-    <div class="container">
+  <section class="container bg-light  pt-3  mb-5 cityInfo">
+    <div class="container cityInfo">
       <div class="row align-items-start">
         <div class="col">
           <div class="input-group flex-nowrap col">
@@ -36,14 +36,15 @@
           <div class="card" style="width: 18rem;">
             <div class="card-header" id="city">City:</div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item" id="temp">Temperature:</li>
-              <li class="list-group-item" id="wind">Wind:</li>
-              <li class="list-group-item" id="humidity">Humidity:</li>
-              <li class="list-group-item" id="UV">UV:</li>
+              <li class="list-group-item bg-light" id="temp">Temperature:</li>
+              <li class="list-group-item bg-light" id="wind">Wind:</li>
+              <li class="list-group-item bg-light" id="humidity">Humidity:</li>
+              <li class="list-group-item bg-light" id="UV">UV:</li>
             </ul>
           </div>
         </div>
       </div>
+    </div>
   </section>
   <div class="container">
     <div class="row align-items-start" id="parentContainer"></div>
