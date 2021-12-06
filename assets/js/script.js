@@ -82,13 +82,13 @@ function getCoords(city) {
           uvEL.textContent = `UV: ${data.daily[0].uvi}`
 
           if (data.daily[0].uvi <= 2) {
-            uvEL.style.background = 'green'
+            uvEL.style.color = 'green'
           }
           if (data.daily[0].uvi > 2 && data.daily[0].uvi <= 7) {
-            uvEL.style.background = 'yellow'
+            uvEL.style.color = 'orange'
           }
           if (data.daily[0].uvi > 7) {
-            uvEL.style.background = 'red'
+            uvEL.style.color = 'red'
           }
 
           var html = ''
