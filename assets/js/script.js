@@ -75,7 +75,7 @@ function getCoords(city) {
         .then(data => {
           var unixTime = data.current.dt;
           createDate(unixTime)
-          cityEL.textContent = `${cityNameEL.value} ${actualDate}`
+          cityEL.textContent = `${city} ${actualDate}`
           tempEL.textContent = `${Math.floor(data.daily[0].temp.day)} degrees`;
           humidityEL.textContent = `Humidity: ${data.daily[0].humidity}`
           windEL.textContent = `Wind: ${data.daily[0].wind_speed}`
