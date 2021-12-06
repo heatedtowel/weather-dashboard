@@ -11,7 +11,11 @@ var apiKey = '62b0a23cd35c692eb316b1b855d80a34';
 var days = '5'
 
 
+init()
 
+function init() {
+  showCity()
+}
 
 
 function createDate(time) {
@@ -29,6 +33,32 @@ function makeContainer(day, temp, humidity, wind, uv) {
             <h5>${wind} MPH</h5>
             <h5>UV:${uv}</h5>
           </div>`
+}
+
+function saveCity(data) {
+  event.preventDefault;
+  var storedResults = JSON.parse(localStorage.getItem('prevCity'));
+  if (storedResults === null) {
+    var selectedCity = [data]
+    localStorage.setItem('prevCity', JSON.stringify(selectedCity))
+    addResult(data);
+    return
+  };
+  storedResults.push(data)
+  localStorage.setItem('prevCity', JSON.stringify(storedResults));
+  addResult(data);
+}
+
+function showCity() {
+  var storedResults = JSON.parse(localStorage.getItem('prevCity'));
+
+  if (storedResults != undefined || storedResults != null) {
+    for (var i = 0; i < storedResults.length; i++) {
+      previousResults.innerHTML += `<button class="btn btn-primary m-1 prevResult" id='prevBtn' type="submit" value="${storedResults[i]}">${storedResults[i]}</button>`;
+
+    }
+  }
+  recentEventListener()
 }
 
 function getCoords(city) {
@@ -73,18 +103,15 @@ function getCoords(city) {
 
 btnEL.addEventListener('click', function () {
   var city = cityNameEL.value
-  previousResults.innerHTML += `<input class="btn btn-primary m-1 prevResult" id='prevBtn' type="submit" value="${city}">`;
-  console.log("original" + city)
-  addPrevEventList();
+  saveCity(city);
   getCoords(city);
 })
+function recentEventListener() {
+  previousResults.addEventListener('click', function(event) {
+  getCoords(event.target.value);
+})
+}
 
-
-function addPrevEventList() {
-  var prevBtnEL = document.querySelector('.prevResult')
-  prevBtnEL.addEventListener('click', function () {
-    var city = prevBtnEL.value
-    console.log(city)
-    getCoords(city);
-  })
+function addResult(city) {
+  previousResults.innerHTML += `<button class="btn btn-primary m-1 prevResult" id='prevBtn' type="submit" value="${city}">${city}</button>`;
 }
